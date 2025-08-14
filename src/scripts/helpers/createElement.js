@@ -20,7 +20,14 @@ const createElement = (options) => {
   }
 
   if (children.length) {
-    children.forEach((child) => element.append(createElement(child)))
+    children.forEach((child) => {
+      if (child instanceof HTMLElement) {
+        element.append(child)
+      }
+      else {
+        element.append(createElement(child))
+      }
+    })
   }
 
   Object.entries(attr).forEach(([key, value]) => element.setAttribute(key, value));

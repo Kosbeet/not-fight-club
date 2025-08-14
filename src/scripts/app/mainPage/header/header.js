@@ -1,9 +1,10 @@
-import createElement from "../../helpers/createElement"
+import createElement from "../../../helpers/createElement"
+import navigation from "./navigation/navigation"
 
 const homeLink = {
   tag: 'a',
   text: '',
-  classes: ['header__link'],
+  classes: ['header__home-link'],
   attr: {
     href: '#'
   },
@@ -16,7 +17,7 @@ const headerContainer = {
   text: '',
   classes: ['header__container'],
   attr: {},
-  children: [homeLink],
+  children: [homeLink, navigation()],
   handlers: {}
 }
 
