@@ -49,8 +49,6 @@ const buttonSubmit = {
   }
 }
 
-
-
 const inputGroupData = {
   tag: 'div',
   text: '',
