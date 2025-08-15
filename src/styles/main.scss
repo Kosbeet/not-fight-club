@@ -1,3 +1,5 @@
 @use './base/base';
 
 @use './../scripts/app/start-page/startPage';
+@use './../scripts/app/mainPage/header/header';
+@use './../scripts/app/mainPage/header/navigation/navigation';
