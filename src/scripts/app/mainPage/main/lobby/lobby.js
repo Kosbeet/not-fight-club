@@ -1,11 +1,13 @@
 import createElement from "../../../../helpers/createElement";
+import avatar from './avatar/avatar';
+import startGame from './startGame/startGame'
 
 const lobbyContainer = {
   tag: 'div',
   text: '',
   classes: ['lobby__container'],
   attr: {},
-  children: [],
+  children: [avatar(), startGame()],
   handlers: {}
 }
 
