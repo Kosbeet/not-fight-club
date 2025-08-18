@@ -25,13 +25,26 @@ const removeErrorMessage = (input) => {
 }
 
 export const handleClickButton = (event) => {
-  event.preventDefault()
+  event.preventDefault();
   const input = event.target.previousElementSibling.children[1];
   if (isNameValid(input.value)) {
-    localStorage.setItem('registry', 'true')
+    localStorage.setItem('registry', 'true');
+    setUserInfo(input.value);
     document.body.innerHTML = '';
   } else {
     addErrorMessage(input, 'Name must be between 3 and 15 letters, spaces are allowed.')
   }
   
+}
+
+const setUserInfo = (value) => {
+
+  const user = {
+    name: value,
+    game: 0,
+    victory: 0,
+    avatar: 'default',
+  }
+
+  localStorage.setItem('info', JSON.stringify(user));
 }
