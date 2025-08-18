@@ -1,5 +1,5 @@
 import mainPage from "./mainPage/mainPage";
-import startPage from "./start-page/startPage";
+import startPage from "./startPage/startPage";
 
 
 const app = () => {
