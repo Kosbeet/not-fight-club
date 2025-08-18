@@ -1,6 +1,13 @@
 @use './base/base';
 
 @use './../scripts/app/start-page/startPage';
+
+//header
 @use './../scripts/app/mainPage/header/header';
 @use './../scripts/app/mainPage/header/navigation/navigation';
+
+//main
 @use './../scripts/app/mainPage/main/main';
+@use './../scripts/app/mainPage/main/lobby/lobby';
+@use './../scripts/app/mainPage/main/lobby/avatar/avatar';
+@use './../scripts/app/mainPage/main/lobby/startGame/startGame';

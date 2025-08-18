@@ -1,5 +1,7 @@
 import createElement from "../../../helpers/createElement";
 
+import lobby from "./lobby/lobby";
+
 const mainData = {
   tag: 'main',
   text: '',
@@ -12,7 +14,7 @@ const mainData = {
 
 const main = () => {
   const mainElement = createElement(mainData);
-
+  mainElement.append(lobby())
   return mainElement;
 }
 

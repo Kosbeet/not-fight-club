@@ -25,7 +25,7 @@ const lobbyData = {
   text: '',
   classes: ['lobby'],
   attr: {},
-  children: [lobbyContainer, lobbyTitle],
+  children: [lobbyTitle, lobbyContainer],
   handlers: {}
 }
 

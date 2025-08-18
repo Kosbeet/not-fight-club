@@ -4,7 +4,7 @@ import { handleAvatarClick } from "./handlers";
 const avatarImg = {
   tag: 'div',
   text: '',
-  classes: ['avatar__image'],
+  classes: ['avatar__image', 'avatar__image_default'],
   attr: {},
   children: [],
   handlers: {

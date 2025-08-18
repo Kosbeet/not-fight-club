@@ -4,7 +4,7 @@ import { handleClickStartButton } from "./handlers";
 
 const startBtn = {
   tag: 'button',
-  text: '',
+  text: 'Start',
   classes: ['start-game__button'],
   attr: {
     type: 'button'

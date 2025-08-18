@@ -1,0 +1,17 @@
+.avatar {
+  flex-basis: 40%;
+  padding: 20px;
+  &__image {
+    border: 2px solid black;
+    cursor: pointer;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    background-size: contain;
+    background-position: center center;
+
+    &_default {
+      background-image: url('./../assets/avatar/default.png');
+    }
+  }
+}

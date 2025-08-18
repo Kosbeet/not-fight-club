@@ -1,0 +1,19 @@
+.start-game {
+  display: flex;
+  flex-grow: 1;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  &__button {
+    font-size: 3rem;
+    padding: 20px;
+    width: 50%;
+    background-color: orange;
+    border-radius: 10px;
+    transition: background-color .5s ease;
+
+    &:hover {
+      background-color: aqua;
+    }
+  }
+}
