@@ -1,5 +1,8 @@
+import battle from "../../battle/battle";
 
 
-export const handleClickStartButton = () => {
-  console.log('start')
+export const handleClickStartButton = (event) => {
+  const main = event.target.closest('.main');
+  event.target.closest('.lobby').remove();
+  main.append(battle());
 }
