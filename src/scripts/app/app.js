@@ -3,7 +3,7 @@ import startPage from "./startPage/startPage";
 
 
 const app = () => {
-  let registry = localStorage.getItem('registry') || null;
+  let registry = localStorage.getItem('registry') || 'false';
   if (registry === 'true') {
     mainPage();
   } else {

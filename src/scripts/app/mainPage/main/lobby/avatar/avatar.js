@@ -1,10 +1,17 @@
 import createElement from "../../../../../helpers/createElement";
 import { handleAvatarClick } from "./handlers";
 
+const getAvatarData = () => {
+  const user = JSON.parse(localStorage.getItem('info')) || {};
+  console.log(user)
+  return user.avatar ? `avatar__image_${user.avatar}` : `avatar__image_default`;
+}
+
+
 const avatarImg = {
   tag: 'div',
   text: '',
-  classes: ['avatar__image', 'avatar__image_default'],
+  classes: ['avatar__image', getAvatarData()],
   attr: {},
   children: [],
   handlers: {
