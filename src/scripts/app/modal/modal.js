@@ -2,7 +2,7 @@ import createElement from "../../helpers/createElement"
 import { handleModalButton } from "./handlers"
 
 
-const images = {
+export const images = {
   0: 'man',
   1: 'woman',
   2: 'dwarf',
