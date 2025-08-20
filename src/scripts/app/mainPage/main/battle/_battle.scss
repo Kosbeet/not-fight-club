@@ -48,6 +48,31 @@
   margin-left: auto;
 }
 
+.char__health,
+.enemy__health {
+  margin-top: 15px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+.enemy__health {
+  margin-left: auto;
+}
+
+.char__progress,
+.enemy__progress {
+  width: 100%;
+  border: none;
+  background-color: grey;
+}
+
+.char__value,
+.enemy__value {
+  font-size: 1.4rem;
+  margin: 0 auto;
+}  
+
 .controls {
   display: flex;
   flex-direction: column;

@@ -35,9 +35,20 @@ const setEntityData = (blockClass) => {
         attr: {},
         children: [
           {
-            tag: 'div',
+            tag: 'progress',
             text: '',
-            classes: [`${blockClass}__health-fill`],
+            classes: [`${blockClass}__progress`],
+            attr: {
+              max: '150',
+              value: '150'
+            },
+            children: [],
+            handlers: {}
+          },
+          {
+            tag: 'span',
+            text: '150/150',
+            classes: [`${blockClass}__value`],
             attr: {},
             children: [],
             handlers: {}
