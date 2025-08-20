@@ -15,5 +15,112 @@
     margin: 0 auto;
     padding: 50px;
     display: flex;
+    justify-content: space-between;
   }
+}
+
+.char,
+.enemy {
+  flex-basis: 33%;
+  width: 100%;
+  padding: 10px;
+}
+
+.char__name,
+.enemy__name {
+  font-size: 2rem;
+}
+
+.enemy__name {
+  display: block;
+  text-align: right;
+}
+
+.char__avatar,
+.enemy__avatar {
+  margin-top: 15px;
+  border: 1px solid black;
+  width: 70%;
+  aspect-ratio: 1 / 1;
+}
+
+.enemy__avatar {
+  margin-left: auto;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 33%;
+  &__group {
+    margin-top: 15px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 48% 4% 48%;
+    gap: 30px 0;
+  }
+  &__attack-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+  &__attack-group > .controls__group-title,
+  &__defence-group > .controls__group-title {
+    font-size: 2rem;
+    text-transform: capitalize;
+  }
+
+  &__inputs {
+    margin-top: 15px;
+  }
+
+  &__inputs_attack,
+  &__inputs_defence {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+  }
+  &__input-box_attack,
+  &__input-box_defence {
+    display: flex;
+    gap: 0 5px;
+  }
+
+  &__input-box_attack {
+    justify-content: end;
+  }
+
+  &__label_defence {
+    order: 2;
+  }
+  &__input_defence {
+    order: 1;
+  }
+  &__label {
+    font-size: 1.2rem;
+  }
+  &__button {
+    grid-column: 1 / 4;
+    font-size: 1.2rem;
+    padding: 10px;
+    width: 30%;
+    background-color: orange;
+    border-radius: 5px;
+    transition: background-color .5s ease;
+    justify-self: center;
+
+    &:hover {
+      background-color: aqua;
+    }
+  }
+}
+
+.separator {
+  width: 1px;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  justify-self: center;
 }

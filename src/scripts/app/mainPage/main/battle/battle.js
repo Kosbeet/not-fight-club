@@ -14,7 +14,7 @@ const setEntityData = (blockClass) => {
     children: [
       {
         tag: 'span',
-        text: '',
+        text: 'name',
         classes: [`${blockClass}__name`],
         attr: {},
         children: [],
@@ -58,7 +58,7 @@ const createInputs = (action) => {
   return inputLabels.map((part) => ({
     tag: 'div',
     text: '',
-    classes: ['controls__input-box'],
+    classes: ['controls__input-box', `controls__input-box_${action}`],
     attr: {},
     children: [
       {
@@ -107,7 +107,7 @@ const createGroup = (action) => {
       {
         tag: 'div',
         text: ``,
-        classes: ['controls__inputs'],
+        classes: ['controls__inputs', `controls__inputs_${action}`],
         attr: {},
         children: createInputs(action),
         handlers: {}
