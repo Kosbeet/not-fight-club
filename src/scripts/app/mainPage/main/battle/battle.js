@@ -1,5 +1,5 @@
 import createElement from "../../../../helpers/createElement";
-import { handleControlsButton } from "./handlers";
+import { handleControlsButton, handleChangeCheck } from "./handlers";
 
 
 const inputLabels = ['Head', 'Neck', 'Body', 'Arms', 'Legs'];
@@ -154,7 +154,7 @@ const createControls = () => {
           {
             tag: 'button',
             text: 'Attack',
-            classes: ['controls__button'],
+            classes: ['controls__button', 'disabled'],
             attr: {},
             children: [],
             handlers: {
@@ -162,7 +162,9 @@ const createControls = () => {
             }
           }
         ],
-        handlers: {}
+        handlers: {
+          change: handleChangeCheck
+        }
       }
     ],
     handlers: {}
