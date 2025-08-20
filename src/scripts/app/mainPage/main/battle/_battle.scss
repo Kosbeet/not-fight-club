@@ -42,6 +42,23 @@
   border: 1px solid black;
   width: 70%;
   aspect-ratio: 1 / 1;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.char__avatar {
+  &_man {
+    background-image: url('./../assets/avatar/man.png');
+  }
+  &_woman {
+    background-image: url('./../assets/avatar/woman.png');
+  }
+  &_dwarf {
+    background-image: url('./../assets/avatar/dwarf.png');
+  }
+  &_elf {
+    background-image: url('./../assets/avatar/elf.png');
+  }
 }
 
 .enemy__avatar {

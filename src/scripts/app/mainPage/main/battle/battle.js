@@ -210,8 +210,26 @@ const battleData = {
   handlers: {}
 }
 
+const updateBattle = () => {
+  const user = JSON.parse(localStorage.getItem('info')) || {};
+
+  const charAvatar = document.querySelector('.char__avatar');
+  const enemyAvatar = document.querySelector('.enemy__avatar');
+  console.log(charAvatar)
+  const charName = document.querySelector('.char__name');
+  const enemyName = document.querySelector('.enemy__name');
+  console.log(charName)
+
+  charAvatar.classList.add(`char__avatar_${user.avatar}`);
+  charName.textContent = user.name;
+}
+
+
 const battle = () => {
   const battleElement = createElement(battleData);
+  const main = document.querySelector('.main');
+  main.append(battleElement);
+  updateBattle();
   return battleElement;
 }
 
