@@ -1,4 +1,4 @@
-
+import { getCurrentEnemy } from "./battleState";
 
 export const handleChangeCheck = () => {
   const attackGroup = document.querySelectorAll('.controls__input_attack');
@@ -17,4 +17,6 @@ export const handleChangeCheck = () => {
 }
 
 export const handleControlsButton = () => {
+  const enemy = getCurrentEnemy();
+  console.log(enemy)
 }
