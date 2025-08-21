@@ -1,6 +1,6 @@
 import createElement from "../../../../helpers/createElement";
 import { handleControlsButton, handleChangeCheck } from "./handlers";
-
+import getEnemies from "../../../data/getEnemies";
 
 const inputLabels = ['Head', 'Neck', 'Body', 'Arms', 'Legs'];
 
@@ -212,6 +212,7 @@ const battleData = {
 
 const updateBattle = () => {
   const user = JSON.parse(localStorage.getItem('info')) || {};
+  const currentEnemy = getEnemies();
 
   const charAvatar = document.querySelector('.char__avatar');
   const enemyAvatar = document.querySelector('.enemy__avatar');
@@ -222,6 +223,9 @@ const updateBattle = () => {
 
   charAvatar.classList.add(`char__avatar_${user.avatar}`);
   charName.textContent = user.name;
+
+  enemyAvatar.classList.add(`enemy__avatar_${currentEnemy.name}`)
+  enemyName.textContent = currentEnemy.name;
 }
 
 

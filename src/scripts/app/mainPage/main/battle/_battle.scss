@@ -34,6 +34,7 @@
 .enemy__name {
   display: block;
   text-align: right;
+  text-transform: capitalize;
 }
 
 .char__avatar,
@@ -63,6 +64,15 @@
 
 .enemy__avatar {
   margin-left: auto;
+  &_spider {
+    background-image: url('./../assets/avatar/spider.png');
+  }
+  &_skeleton {
+    background-image: url('./../assets/avatar/skeleton.png');
+  }
+  &_troll {
+    background-image: url('./../assets/avatar/troll.png');
+  }
 }
 
 .char__health,
