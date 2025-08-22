@@ -1,6 +1,6 @@
 import { getCurrentEnemy } from "./battleState";
 import getRandomNumber from "../../../../helpers/getRandomNumber";
-
+import chanceCheck from "../../../../helpers/chanceCheck";
 
 export const handleChangeCheck = () => {
   const attackGroup = document.querySelectorAll('.controls__input_attack');
@@ -55,13 +55,54 @@ const getPlayerPick = () => {
     hit: 20
   }
 }
+const showResult = () => {
+  console.log('++++')
+}
+
+const updateHealth = (hit, entity) => {
+  const progress = document.querySelector(`.${entity}__progress`);
+  const number = document.querySelector(`.${entity}__value`);
+
+  progress.value = +progress.value - hit;
+  number.textContent = `${progress.value}/150`;
+  if (progress.value <= 0) {
+    showResult()
+  }
+}
+
+const getResultOfAttack = (attack, defence, hit, entity) => {
+  
+  const user = JSON.parse(localStorage.getItem('info')).name || 'player';
+  const enemy = getCurrentEnemy().name;
+  
+  for (let value of attack) {
+    if (defence.includes(value)) {
+      console.log('block')
+    } else {
+      if (chanceCheck(0.1)) {
+        const critHit = hit * 1.5;
+        updateHealth(critHit, entity)
+      } else {
+        console.log(`${user} hit ${enemy} by ${hit}`)
+        updateHealth(hit, entity)
+      }
+    }
+  }
+}
+const clearInputs = () => {
+  const defenceGroup = document.querySelectorAll('.controls__input_defence');
+  const attackGroup = document.querySelectorAll('.controls__input_attack');
+  [...attackGroup, ...defenceGroup].forEach((check) => {
+    check.checked = false;
+  })
+  handleChangeCheck()
+} 
 
 export const handleControlsButton = () => {
   const enemyPick = getEnemyPick();
   const playerPick = getPlayerPick();
   
-  
-
-  console.log(enemyPick, playerPick)
-
+  getResultOfAttack(playerPick.attack, enemyPick.defence, playerPick.hit, 'char');
+  getResultOfAttack(enemyPick.attack, playerPick.defence, enemyPick.hit, 'enemy');
+  clearInputs()
 }
