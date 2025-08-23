@@ -2,6 +2,7 @@ import createElement from "../../../../helpers/createElement";
 import { handleControlsButton, handleChangeCheck } from "./handlers";
 import getEnemies from "../../../data/getEnemies";
 import { setCurrentEnemy } from "./battleState";
+import logs from "./logs/logs";
 
 const inputLabels = ['Head', 'Neck', 'Body', 'Arms', 'Legs'];
 
@@ -189,7 +190,7 @@ const battleContainer = {
   text: '',
   classes: ['battle__container'],
   attr: {},
-  children: [createCharachter(), createControls(), createEnemy()],
+  children: [createCharachter(), createControls(), createEnemy(), logs()],
   handlers: {}
 }
 
