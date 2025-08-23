@@ -70,21 +70,59 @@ const updateHealth = (hit, entity) => {
   }
 }
 
-const getResultOfAttack = (attack, defence, hit, entity) => {
-  
-  const user = JSON.parse(localStorage.getItem('info')).name || 'player';
-  const enemy = getCurrentEnemy().name;
-  
+const createLog = (attacker, defender, value, action, crit, damage = '') => {
+  const logs = document.querySelector('.logs');
+  const msg = document.createElement('span');
+  msg.classList.add('logs__item');
+
+  const attackerElem = document.createElement('span');
+  attackerElem.textContent = attacker;
+  attackerElem.classList.add('bold-colored');
+
+  const defenderElem = document.createElement('span');
+  defenderElem.textContent = defender;
+  defenderElem.classList.add('bold-colored');
+
+  const valueElem = document.createElement('span');
+  valueElem.textContent = value;
+  valueElem.classList.add('bold-colored');
+
+  if (action === 'block') {
+    msg.append(attackerElem, ' attacked ', defenderElem, ' to ', valueElem, ' but ', defenderElem, ' was able to protect his ', valueElem)
+  } else {
+    const hitElem = document.createElement('span');
+    if (crit) { 
+      hitElem.textContent = `crit ${damage}`;
+      hitElem.classList.add('crit')
+      msg.append(attackerElem, ' attacked ', defenderElem, ' to ', valueElem, ' and ', hitElem, ' damage.')
+    } else {
+      hitElem.textContent = `${damage}`;
+      hitElem.classList.add('bold-colored')
+      msg.append(attackerElem, ' attacked ', defenderElem, ' to ', valueElem, ' and deal ', hitElem, ' damage.')
+    }
+  }
+
+  logs.prepend(msg);
+}
+
+const getResultOfAttack = (attacker, defender, attack, defence, hit, entity) => {
   for (let value of attack) {
     if (defence.includes(value)) {
-      console.log('block')
+      createLog(attacker, defender, value, 'block')
     } else {
+      let hitFlag = false;
+      let damage = hit;
+
       if (chanceCheck(0.1)) {
-        const critHit = hit * 1.5;
-        updateHealth(critHit, entity)
+        hitFlag = true;
+        damage = hit * 1.5;
+      }
+      updateHealth(damage, entity);
+
+      if (hitFlag) {
+        createLog(attacker, defender, value, 'deal', true, damage)
       } else {
-        console.log(`${user} hit ${enemy} by ${hit}`)
-        updateHealth(hit, entity)
+        createLog(attacker, defender, value, 'deal', false, damage)
       }
     }
   }
@@ -101,8 +139,10 @@ const clearInputs = () => {
 export const handleControlsButton = () => {
   const enemyPick = getEnemyPick();
   const playerPick = getPlayerPick();
+  const user = JSON.parse(localStorage.getItem('info')).name || 'player';
+  const enemy = getCurrentEnemy().name;
   
-  getResultOfAttack(playerPick.attack, enemyPick.defence, playerPick.hit, 'char');
-  getResultOfAttack(enemyPick.attack, playerPick.defence, enemyPick.hit, 'enemy');
+  getResultOfAttack(user, enemy, playerPick.attack, enemyPick.defence, playerPick.hit, 'enemy');
+  getResultOfAttack(enemy, user, enemyPick.attack, playerPick.defence, enemyPick.hit, 'char');
   clearInputs()
 }
