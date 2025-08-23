@@ -1,6 +1,7 @@
 import { getCurrentEnemy } from "./battleState";
 import getRandomNumber from "../../../../helpers/getRandomNumber";
 import chanceCheck from "../../../../helpers/chanceCheck";
+import resultModal from "./resultModal/resultModal";
 
 export const handleChangeCheck = () => {
   const attackGroup = document.querySelectorAll('.controls__input_attack');
@@ -55,8 +56,9 @@ const getPlayerPick = () => {
     hit: 20
   }
 }
-const showResult = () => {
-  console.log('++++')
+const showResult = (entity) => {
+  resultModal();
+  document.querySelector('.result-modal__result').textContent = entity === 'enemy' ? 'you won' : 'you lose'
 }
 
 const updateHealth = (hit, entity) => {
@@ -66,7 +68,7 @@ const updateHealth = (hit, entity) => {
   progress.value = +progress.value - hit;
   number.textContent = `${progress.value}/150`;
   if (progress.value <= 0) {
-    showResult()
+    showResult(entity);
   }
 }
 
