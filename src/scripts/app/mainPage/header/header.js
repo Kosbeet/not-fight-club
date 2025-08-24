@@ -1,15 +1,16 @@
-import createElement from "../../../helpers/createElement"
-import navigation from "./navigation/navigation"
+import createElement from "../../../helpers/createElement";
+import navigation from "./navigation/navigation";
+import { handleClickHome } from "./handlers";
 
 const homeLink = {
   tag: 'a',
   text: '',
   classes: ['header__home-link'],
-  attr: {
-    href: '#'
-  },
+  attr: {},
   children: [],
-  handlers: {}
+  handlers: {
+    click: handleClickHome
+  }
 }
 
 const headerContainer = {
