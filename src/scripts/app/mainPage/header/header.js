@@ -6,7 +6,9 @@ const homeLink = {
   tag: 'a',
   text: '',
   classes: ['header__home-link'],
-  attr: {},
+  attr: {
+    title: 'home'
+  },
   children: [],
   handlers: {
     click: handleClickHome
