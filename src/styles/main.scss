@@ -1,0 +1,22 @@
+@use './base/base';
+
+@use './../scripts/app/startPage/startPage';
+
+//header
+@use './../scripts/app/mainPage/header/header';
+@use './../scripts/app/mainPage/header/navigation/navigation';
+
+//main
+@use './../scripts/app/mainPage/main/main';
+@use './../scripts/app/mainPage/main/lobby/lobby';
+@use './../scripts/app/mainPage/main/lobby/avatar/avatar';
+@use './../scripts/app/mainPage/main/lobby/startGame/startGame';
+
+@use './../scripts/app/modal/modal';
+
+@use './../scripts/app/mainPage/main/battle/battle';
+@use './../scripts/app/mainPage/main/battle/logs/logs';
+@use './../scripts/app/mainPage/main/battle/resultModal/result-modal';
+
+@use './../scripts/app/mainPage/main/info/info';
+@use './../scripts/app/mainPage/main/settings/settings';

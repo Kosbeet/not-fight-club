@@ -1,0 +1,72 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    gap: 40px 0;
+  }
+  &__card-line {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+  }
+  &__label {
+    width: 400px;
+    max-width: 25%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    border: 1px solid black;
+    background-position: center center;
+    background-size: contain;
+    cursor: pointer;
+    &_man {
+      background-image: url('./../assets/avatar/man.png');
+    }
+    &_woman {
+      background-image: url('./../assets/avatar/woman.png');
+    }
+    &_dwarf {
+      background-image: url('./../assets/avatar/dwarf.png');
+    }
+    &_elf {
+      background-image: url('./../assets/avatar/elf.png');
+    }
+    &:has(.modal__input:checked) {
+      border: 1px solid red;
+    }  
+  }
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__button {
+    font-size: 2rem;
+    padding: 20px;
+    width: 30%;
+    background-color: orange;
+    border-radius: 10px;
+    transition: background-color .5s ease;
+    margin: 0 auto;
+
+    &:hover {
+      background-color: aqua;
+    }
+  }
+}

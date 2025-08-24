@@ -1,0 +1,39 @@
+import createElement from "../../../../helpers/createElement";
+import avatar, { updateAvatar } from './avatar/avatar';
+import startGame from './startGame/startGame'
+
+const lobbyContainer = {
+  tag: 'div',
+  text: '',
+  classes: ['lobby__container'],
+  attr: {},
+  children: [avatar(), startGame()],
+  handlers: {}
+}
+
+const lobbyTitle = {
+  tag: 'h2',
+  text: 'Lobby',
+  classes: ['lobby__title'],
+  attr: {},
+  children: [],
+  handlers: {}
+}
+
+const lobbyData = {
+  tag: 'section',
+  text: '',
+  classes: ['lobby'],
+  attr: {},
+  children: [lobbyTitle, lobbyContainer],
+  handlers: {}
+}
+
+const lobby = () => {
+  const lobbySection = createElement(lobbyData);
+  updateAvatar()
+  return lobbySection;
+}
+
+
+export default lobby;
