@@ -1,4 +1,5 @@
 import info from "../../main/info/info"
+import settigns from "../../main/settings/settings";
 
 export const handleClickInfo = () => {
   const main = document.querySelector('.main');
@@ -7,5 +8,7 @@ export const handleClickInfo = () => {
 }
 
 export const handleClickSettings = () => {
-  console.log('settings')
+  const main = document.querySelector('.main');
+  main.innerHTML = '';
+  settigns();
 }

@@ -10,7 +10,7 @@ export const handleInput = (event) => {
   }
 }
 
-const isNameValid = (name) => {
+export const isNameValid = (name) => {
   const reg = /^[A-Za-z]{3,15}$/;
   return reg.test(name)
 }
