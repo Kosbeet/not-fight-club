@@ -1,3 +1,4 @@
+import { updateAvatar } from "../mainPage/main/lobby/avatar/avatar";
 import { images } from "./modal";
 
 export const handleModalButton = (event) => {
@@ -19,4 +20,5 @@ const setNewAvatar = (index, user) => {
   avatarElement.classList.replace(`avatar__image_${user.avatar}`, `avatar__image_${copyImages[index]}`)
   user.avatar = copyImages[index];
   localStorage.setItem('info', JSON.stringify(user));
+  updateAvatar()
 }

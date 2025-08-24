@@ -1,5 +1,5 @@
 import createElement from "../../../../helpers/createElement";
-import avatar from "../lobby/avatar/avatar";
+import avatar, { updateAvatar } from "../lobby/avatar/avatar";
 
 const infoData = {
   tag: 'section',
@@ -99,6 +99,7 @@ const info = () => {
   const main = document.querySelector('.main');
   main.append(infoElement);
   updateInfo();
+  updateAvatar();
   return infoElement;
 }
 

@@ -1,5 +1,5 @@
 import createElement from "../../../../helpers/createElement";
-import avatar from './avatar/avatar';
+import avatar, { updateAvatar } from './avatar/avatar';
 import startGame from './startGame/startGame'
 
 const lobbyContainer = {
@@ -31,6 +31,7 @@ const lobbyData = {
 
 const lobby = () => {
   const lobbySection = createElement(lobbyData);
+  updateAvatar()
   return lobbySection;
 }
 

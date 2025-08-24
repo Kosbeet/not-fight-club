@@ -28,8 +28,17 @@ const avatarData = {
   handlers: {}
 }
 
+export const updateAvatar = () => {
+  const user = JSON.parse(localStorage.getItem('info'));
+  const avatarImage = document.querySelector('.avatar__image');
+  if (!avatarImage) return;
+  avatarImage.className = 'avatar__image';
+  avatarImage.classList.add(`avatar__image_${user.avatar}`);
+}
+
 const avatar = () => {
   const avatarElement = createElement(avatarData);
+  updateAvatar()
   return avatarElement;
 }
 
