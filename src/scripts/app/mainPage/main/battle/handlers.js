@@ -123,9 +123,9 @@ const getResultOfAttack = (attacker, defender, attack, defence, hit, entity) => 
       let hitFlag = false;
       let damage = hit;
 
-      if (chanceCheck(0.1)) {
+      if (chanceCheck(0.2)) {
         hitFlag = true;
-        damage = hit * 1.5;
+        damage = Math.floor(hit * 1.5);
       }
       updateHealth(damage, entity);
 
