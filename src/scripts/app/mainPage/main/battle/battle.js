@@ -79,7 +79,7 @@ const createInputs = (action) => {
         text: part,
         classes: ['controls__label', `controls__label_${action}`],
         attr: {
-          for: part.toLowerCase(),
+          for: `${part.toLowerCase()}-${action}`,
         },
         children: [],
         handlers: {}
@@ -90,7 +90,7 @@ const createInputs = (action) => {
         classes: ['controls__input', `controls__input_${action}`],
         attr: {
           type: 'checkbox',
-          id: part.toLowerCase(),
+          id: `${part.toLowerCase()}-${action}`,
           value: part.toLowerCase(),
           name: action
         },
