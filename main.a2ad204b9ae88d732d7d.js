@@ -72,13 +72,15 @@ function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
+
 var handleModalButton = function handleModalButton(event) {
-  var user = JSON.parse(localStorage.getItem('info')) || null;
+  var user = JSON.parse(localStorage.getItem('info'));
   console.log(user);
   if (user) {
-    var inputValue = document.querySelector('.modal__input[name="avatar"]:checked').value;
+    var input = document.querySelector('.modal__input[name="avatar"]:checked');
+    if (!input) return;
+    var inputValue = input.value;
     setNewAvatar(inputValue, user);
-    console.log(inputValue);
   }
   event.target.closest('.modal').remove();
 };
@@ -88,6 +90,7 @@ var setNewAvatar = function setNewAvatar(index, user) {
   avatarElement.classList.replace("avatar__image_".concat(user.avatar), "avatar__image_".concat(copyImages[index]));
   user.avatar = copyImages[index];
   localStorage.setItem('info', JSON.stringify(user));
+  updateAvatar();
 };
 ;// ./src/scripts/app/modal/modal.js
 function modal_slicedToArray(r, e) { return modal_arrayWithHoles(r) || modal_iterableToArrayLimit(r, e) || modal_unsupportedIterableToArray(r, e) || modal_nonIterableRest(); }
@@ -204,8 +207,16 @@ var avatarData = {
   children: [avatarImg],
   handlers: {}
 };
+var updateAvatar = function updateAvatar() {
+  var user = JSON.parse(localStorage.getItem('info'));
+  var avatarImage = document.querySelector('.avatar__image');
+  if (!avatarImage) return;
+  avatarImage.className = 'avatar__image';
+  avatarImage.classList.add("avatar__image_".concat(user.avatar));
+};
 var avatar = function avatar() {
   var avatarElement = createElement(avatarData);
+  updateAvatar();
   return avatarElement;
 };
 /* harmony default export */ const avatar_avatar = (avatar);
@@ -292,6 +303,7 @@ var info = function info() {
   var main = document.querySelector('.main');
   main.append(infoElement);
   updateInfo();
+  updateAvatar();
   return infoElement;
 };
 /* harmony default export */ const info_info = (info);
@@ -314,8 +326,14 @@ var chanceCheck = function chanceCheck(value) {
 };
 /* harmony default export */ const helpers_chanceCheck = (chanceCheck);
 ;// ./src/scripts/app/mainPage/main/battle/resultModal/handlers.js
+
 var handleClickExitButton = function handleClickExitButton(event) {
   event.target.closest('.result-modal').remove();
+  var main = document.querySelector('.main');
+  var logs = document.querySelector('.logs');
+  logs.innerHTML = '';
+  main.innerHTML = '';
+  main.append(lobby_lobby());
 };
 ;// ./src/scripts/app/mainPage/main/battle/resultModal/resultModal.js
 
@@ -491,9 +509,9 @@ var getResultOfAttack = function getResultOfAttack(attacker, defender, attack, d
       } else {
         var hitFlag = false;
         var damage = hit;
-        if (helpers_chanceCheck(0.1)) {
+        if (helpers_chanceCheck(0.2)) {
           hitFlag = true;
-          damage = hit * 1.5;
+          damage = Math.floor(hit * 1.5);
         }
         updateHealth(damage, entity);
         if (hitFlag) {
@@ -643,7 +661,7 @@ var createInputs = function createInputs(action) {
         text: part,
         classes: ['controls__label', "controls__label_".concat(action)],
         attr: {
-          "for": part.toLowerCase()
+          "for": "".concat(part.toLowerCase(), "-").concat(action)
         },
         children: [],
         handlers: {}
@@ -653,7 +671,7 @@ var createInputs = function createInputs(action) {
         classes: ['controls__input', "controls__input_".concat(action)],
         attr: {
           type: 'checkbox',
-          id: part.toLowerCase(),
+          id: "".concat(part.toLowerCase(), "-").concat(action),
           value: part.toLowerCase(),
           name: action
         },
@@ -846,6 +864,7 @@ var lobbyData = {
 };
 var lobby = function lobby() {
   var lobbySection = createElement(lobbyData);
+  updateAvatar();
   return lobbySection;
 };
 /* harmony default export */ const lobby_lobby = (lobby);
@@ -1129,10 +1148,12 @@ var navigation = function navigation() {
 /* harmony default export */ const navigation_navigation = (navigation);
 ;// ./src/scripts/app/mainPage/header/handlers.js
 
+
 var handleClickHome = function handleClickHome() {
   var main = document.querySelector('.main');
   main.innerHTML = '';
   main.append(lobby_lobby());
+  updateAvatar();
 };
 ;// ./src/scripts/app/mainPage/header/header.js
 
@@ -1142,7 +1163,9 @@ var homeLink = {
   tag: 'a',
   text: '',
   classes: ['header__home-link'],
-  attr: {},
+  attr: {
+    title: 'home'
+  },
   children: [],
   handlers: {
     click: handleClickHome
@@ -1261,4 +1284,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 /******/ })()
 ;
-//# sourceMappingURL=main.41e9a5bbe564f6bc7116.js.map
+//# sourceMappingURL=main.a2ad204b9ae88d732d7d.js.map
