@@ -1,14 +1,14 @@
 import createElement from "../../../../helpers/createElement"
-
+import { handleClickInfo, handleClickSettings } from "./handlers"
  
-const createListItem = (extClass) => {
+const createListItem = (extClass, handlers = {}) => {
   return {
     tag: 'li',
     text: '',
     classes: ['navigation__item', extClass],
     attr: {},
     children: [],
-    handlers: {}
+    handlers
   }
 }
 
@@ -18,8 +18,8 @@ const navList = {
   classes: ['navigation__list'],
   attr: {},
   children: [
-    createListItem('navigation__item_info'),
-    createListItem('navigation__item_settings')
+    createListItem('navigation__item_info', {click: handleClickInfo}),
+    createListItem('navigation__item_settings', {click: handleClickSettings})
   ],
   handlers: {}
 }

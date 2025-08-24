@@ -43,8 +43,9 @@ const setUserInfo = (value) => {
 
   const user = {
     name: value,
-    game: 0,
-    victory: 0,
+    games: 0,
+    wins: 0,
+    looses: 0,
     avatar: 'default',
   }
 

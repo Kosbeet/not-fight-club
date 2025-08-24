@@ -1,0 +1,25 @@
+.info {
+  &__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+  &__title {
+    font-size: 3rem;
+  }
+  &__content-box {
+    display: flex;
+  }
+  &__current-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+    gap: 20px 0;
+  }
+  &__text {
+    font-size: 3rem;
+  }
+}
