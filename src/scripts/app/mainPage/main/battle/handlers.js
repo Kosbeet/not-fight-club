@@ -58,7 +58,15 @@ const getPlayerPick = () => {
 }
 const showResult = (entity) => {
   resultModal();
-  document.querySelector('.result-modal__result').textContent = entity === 'enemy' ? 'you won' : 'you lose'
+  document.querySelector('.result-modal__result').textContent = entity === 'enemy' ? 'you won' : 'you lose';
+  const user = JSON.parse(localStorage.getItem('info'));
+  user.games += 1;
+  if (entity === 'enemy') {
+    user.wins += 1;
+  } else {
+    user.looses += 1;
+  }
+  localStorage.setItem('info', JSON.stringify(user))
 }
 
 const updateHealth = (hit, entity) => {
